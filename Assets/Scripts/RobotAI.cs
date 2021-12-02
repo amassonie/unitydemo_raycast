@@ -79,7 +79,6 @@ public class RobotAI : MonoBehaviour
             if (TestBallTagForTarget(collision.gameObject.tag))
             {
                 print(this.transform.tag + " found " + collision.gameObject.transform.tag);
-                Destroy(collision.gameObject);
                 robotMode = RobotMode.WANDERING;
                 targetBallsFound.RemoveAt(travelTargetIndex);
             }
@@ -140,15 +139,14 @@ public class RobotAI : MonoBehaviour
 
                 if (targetBallsFound.Count > 0)
                 {
+                    travelTargetIndex = GetNearestBall();
+                    travelTarget = targetBallsFound[travelTargetIndex].Item1;
                     robotMode = RobotMode.TRAVELLING;
                 }
                 break;
             case RobotMode.TRAVELLING:
                 while (lastDeltaTime >= 1.5f)
                 {
-
-                    travelTargetIndex = GetNearestBall();
-                    travelTarget = targetBallsFound[travelTargetIndex].Item1;
                     
                     lastDeltaTime -= 1.5f;
                     Vector3 deltaPos = travelTarget - this.transform.position;
