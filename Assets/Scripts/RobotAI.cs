@@ -78,6 +78,7 @@ public class RobotAI : MonoBehaviour
         {
             if (TestBallTagForTarget(collision.gameObject.tag))
             {
+                Destroy(collision.gameObject);
                 print(this.transform.tag + " found " + collision.gameObject.transform.tag);
                 robotMode = RobotMode.WANDERING;
                 targetBallsFound.RemoveAt(travelTargetIndex);
