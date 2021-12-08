@@ -39,6 +39,8 @@ public class RobotAI : MonoBehaviour
         Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         raycastCamera.AddRaycastBallHitEventCall(this.OnRayCastBallHit);
+
+        startRotation = transform.rotation;
     }
 
     public void OnRayCastBallHit(Vector3 pos, string tag)
